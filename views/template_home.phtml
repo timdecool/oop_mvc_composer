@@ -4,9 +4,10 @@
  * Et éventuellement de déclarer des variables de traitement
  * */
 $pictures = $data['pictures'];
-?>
-<h1 class="text-center">Home of <br><?= CONFIG_SITE_TITLE ?></h1>
 
+?>
+
+<h1 class="text-center">Home of <br><?= CONFIG_SITE_TITLE ?></h1>
 <!-- DEBUT DU CAROUSEL -->
 <div id="homeCarousel" class="carousel slide" data-bs-touch="true">
 
@@ -46,3 +47,5 @@ $pictures = $data['pictures'];
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<p class="my-3"><?= $data['lorem']; ?></p>

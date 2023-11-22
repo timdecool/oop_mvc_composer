@@ -14,5 +14,8 @@ class UserManager extends AbstractManager
         self::$obj = new User();
     }
 
-
+    public function updateUser($name,$email,$roles,$id) {
+        $statement = "UPDATE user SET name=?,email=?,roles=? WHERE id =?";
+        self::$db->query($statement,[$name,$email,$roles,$id]);
+    }
 }

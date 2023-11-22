@@ -12,6 +12,12 @@ abstract class AbstractManager
     {
     }
 
+    public function count($field, $value) {
+        $statement = 'SELECT COUNT(*) AS '.$field.' FROM '.self::$tableName.' WHERE '.$field.'='.$value;
+        $results = self::$db->selectColumn($statement);
+        return $results;
+    }
+
     public function getAll($nb = null): array|false
     {
         $limit = !is_null($nb) ? "LIMIT " . $nb : "";
@@ -25,6 +31,15 @@ abstract class AbstractManager
         $whereId = !is_null($id) ? "WHERE id=?" : "";
         $row = [];
         $row = self::$db->select("SELECT * from ".self::$tableName." " . $whereId . "LIMIT 1", [$id]);
+        return $row;
+    }
+
+    public function getOneByField($field, $value = null):array|false 
+    {
+        $row = [];
+
+        $whereField = !is_null($value) ? "WHERE ".$field."=?" : "";
+        $row = self::$db->select("SELECT * FROM ".self::$tableName." ".$whereField."LIMIT 1", [$value]);
         return $row;
     }
 

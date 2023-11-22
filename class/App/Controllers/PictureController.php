@@ -3,9 +3,13 @@ namespace App\Controllers;
 use App\Controllers\Controller;
 use App\Models\Picture;
 use App\Models\PictureManager;
+use App\Services\Authenticator;
 
 class PictureController extends Controller
 {
+    public function __construct() {
+        if (!Authenticator::isGranted("ROLE_ADMIN")) header("Location:?page=login");
+    }
 
     public function index(){
         $pic = new PictureManager();

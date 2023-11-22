@@ -60,7 +60,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php foreach (CONFIG_ROUTES as $key => $value) : ?>
                         <li class="nav-item">
-                            <a class="nav-link <?php if ($page === $key) echo "active"; ?>" href="?page=<?= $key ?>">
+                            <a class="nav-link" href="?page=<?= $key ?>">
                                 <?= $value ?>
                             </a>
                         </li>
@@ -77,11 +77,15 @@
                             </li>
                             <li><a class="dropdown-item" href="?page=register">Register</a></li>
                             <?php else: ?>
-                            <li><a class="dropdown-item" href="?page=admin_list">Admin</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="?page=logout">Logout</a></li>
+                                <?php if (App\Services\Authenticator::isGranted("ROLE_ADMIN")) : ?>
+                                <li><a class="dropdown-item" href="?page=admin_list">Admin</a></li>
+                                <li><hr class="dropdown-divider"></li>  
+                                <li><a class="dropdown-item" href="?page=user">User</a></li>
+                                <li><hr class="dropdown-divider"></li>  
+                                <li><a class="dropdown-item" href="?page=picture">Picture</a></li>
+                                <li><hr class="dropdown-divider"></li>                                  
+                                <?php endif ?>
+                                <li><a class="dropdown-item" href="?page=logout">Logout</a></li>
                             <?php endif ?>
                         </ul>
                     </li>

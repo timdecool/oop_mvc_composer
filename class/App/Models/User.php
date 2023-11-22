@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use App\Models\AbstractTable;
+use App\Models\UserManager;
 
 class User extends AbstractTable{
 
@@ -71,7 +72,12 @@ class User extends AbstractTable{
         // Si l'email n'est pas bien formé => error
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
             $errors[] = "Veuillez renseigner un email valide s'il vous plait.";
+        } else {
+            $manager = new UserManager();
+            $user = $manager->getOneByField("email",$this->email);
+            if(!empty($user)) $errors[] = "Il existe déjà un compte associé à cette adresse e-mail.";
         }
+
         // Si le mot de passe est inférieur à 3 caractères => error
         if (strlen($this->password) < 3){
             $errors[] = "Le mot-de-passe doit être au moins de 3 caractères, merci.";

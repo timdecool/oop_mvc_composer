@@ -67,6 +67,13 @@ class Database
         return $result;
     }
 
+    public function selectColumn($statement,$params=[]){
+        $stmt = $this->getPDO()->prepare($statement);
+        $stmt->execute($params);
+        $result = $stmt->fetchColumn();
+        return $result;
+    }
+
     public function query($statement,$params=[]){
         $stmt = $this->getPDO()->prepare($statement);
         $stmt->execute($params);

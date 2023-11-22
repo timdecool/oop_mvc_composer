@@ -1,0 +1,17 @@
+{
+    "name": "timothe/oop_mvc_composer",
+    "autoload": {
+        "psr-4": {
+            "App\\": "./class/App"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tim Decool",
+            "email": "tim.decool@gmail.com"
+        }
+    ],
+    "require": {
+        "joshtronic/php-loremipsum": "^2.1"
+    }
+}

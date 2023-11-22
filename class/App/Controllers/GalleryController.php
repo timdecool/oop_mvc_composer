@@ -5,7 +5,6 @@ use App\Models\PictureManager;
 
 class GalleryController extends Controller{
 
-
     public function index(){
         $pic = new PictureManager();
         $pictures = $pic->getAll();
