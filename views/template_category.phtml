@@ -1,0 +1,40 @@
+<?php
+$categories = $data['categories'];
+?>
+
+<h1 class="text-center">Admin Category</h1>
+<a href="?page=category&action=new" class="btn btn-primary m-1">Add Category</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Slug</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach ($categories as $cat) : ?>
+    <tr>
+      <th scope="row"><?= $cat['id'] ?></th>
+      <td><?= $cat['name'] ?></td>
+      <td><?= $cat['slug'] ?></td>
+      <td><?= $cat['created_at'] ?></td>
+      <td>
+        <a href="?page=category&action=edit&id=<?= $cat['id'] ?>" class="btn btn-success m-1">Update</a>
+        <a href="javascript:deleteCat(<?= $cat['id'] ?>)" class="btn btn-warning m-1">Delete</a>
+      </td>
+    </tr>
+  <?php endforeach ?>
+  </tbody>
+  </table>
+  <script>
+    function deleteCat(id){
+      const question = window.confirm("Are you sure you want to delete category "+id+" ?");
+      if (question){
+        location.href="?page=category&action=delete&id="+id;
+      }
+    }
+  </script>
+  <a href="?page=category&action=new" class="btn btn-primary m-1">Add Category</a>

@@ -1,0 +1,17 @@
+<h1>New User</h1>
+<form method="POST">
+<?php if (!empty($errors)) : ?>
+    <div class="alert alert-danger" role="alert">
+        <?php foreach ($errors as $error) : ?>
+            <p><?= $error ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" required class="form-control" id="name" name="name" placeholder="Category name">
+
+    <button class="mt-4 btn btn-primary" type="submit" id="send" name="submit">Send</button>
+  </div>
+</form>

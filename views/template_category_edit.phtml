@@ -1,0 +1,17 @@
+<h1>Edit Category</h1>
+<form method="POST">
+<?php if (!empty($data['errors'])) : ?>
+    <div class="alert alert-danger" role="alert">
+        <?php foreach ($data['errors'] as $error) : ?>
+            <p><?= $error ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" required class="form-control" id="name" name="name" placeholder="Your name" value="<?= $data['category']['name']?>">
+
+    <button class="mt-4 btn btn-primary" type="submit" id="send" name="submit">Update</button>
+  </div>
+</form>
