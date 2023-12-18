@@ -71,7 +71,6 @@ class CategoryController extends Controller
                 $manager->update($catArray);
                 header('Location:?page=category');
             }
-
         }
 
         $this->render('./views/template_category_edit.phtml', [
