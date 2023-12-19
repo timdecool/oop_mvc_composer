@@ -10,10 +10,18 @@
             <label for="InputPassword" class="form-label">Mot de passe</label>
             <input type="password" class="form-control" id="InputPassword" name="password">
         </div>
-    
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="remember" name="remember">
+            <label class="form-check-label" for="remember">
+                Remember me
+            </label>
+        </div>
+        <div class="g-recaptcha mb-3 mx-auto" data-sitekey="<?= RECAPTCHA_PUBLIC_KEY ?>"></div>
         <button type="submit" class="btn btn-success" name="login">Me connecter</button>
         <?php foreach($data['errors'] as $e) : ?>
-            <p class="text-center text-danger mt-3"><?= $e ?></p>
+            <p class="text-center text-danger mt-3"><?= implode("<br>", $e) ?></p>
         <?php endforeach; ?>
     </form>
 </section>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

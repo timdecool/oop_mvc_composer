@@ -5,6 +5,10 @@ use App\Models\UserManager;
 class Authenticator {
     public function __construct() {
         if(!isset($_SESSION)) session_start();
+        if(isset($_COOKIE[CONFIG_COOKIE_NAME])) {
+            $user = unserialize($_COOKIE[CONFIG_COOKIE_NAME]);
+            $this->setSessionData($user);
+        }
     }
 
     public function login(string $email, string $password) :array {
