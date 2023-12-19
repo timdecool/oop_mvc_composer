@@ -9,6 +9,12 @@ class Authenticator {
             $user = unserialize($_COOKIE[CONFIG_COOKIE_NAME]);
             $this->setSessionData($user);
         }
+        if(isset($_POST['cookie-yes']) || isset($_COOKIE[CONFIG_COOKIE_NAME])) {
+            $_SESSION['cookie'] = true;
+        }
+        else if(isset($_POST['cookie-no'])) {
+            $_SESSION['cookie'] = false;
+        }
     }
 
     public function login(string $email, string $password) :array {

@@ -15,6 +15,7 @@
             <label class="form-check-label" for="remember">
                 Remember me
             </label>
+            <p id="warningCookie" class="visually-hidden"><small class="text-danger">Attention, en cochant cette case, vous acceptez de recevoir un cookie.</small><p>
         </div>
         <div class="g-recaptcha mb-3 mx-auto" data-sitekey="<?= RECAPTCHA_PUBLIC_KEY ?>"></div>
         <button type="submit" class="btn btn-success" name="login">Me connecter</button>
@@ -25,3 +26,10 @@
 </section>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    document.querySelector('#remember').addEventListener('click', () => {
+        if(<?= isset($_SESSION['cookie']) && $_SESSION['cookie'] == false ?>) {
+            document.querySelector('#warningCookie').classList.toggle("visually-hidden")
+        }
+    })
+</script>

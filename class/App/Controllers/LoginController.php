@@ -25,6 +25,7 @@ class LoginController extends Controller
             $success = $auth->login(strip_tags($_POST['mail']), strip_tags($_POST['password']));
             if ($success['verif'] && empty($errors)) {
                 if(isset($_POST['remember'])) {
+                    $_SESSION['cookie'] = true;
                     $cookieData = serialize($_SESSION['user']);
                     setcookie(CONFIG_COOKIE_NAME, $cookieData, time()+3600*24*365);
                 }
